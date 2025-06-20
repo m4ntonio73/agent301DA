@@ -394,7 +394,7 @@ footer = """
 }
 </style>
 <div class="custom-footer">
-    🤖 Agent 301 ▫︎ Análise de Dados ▫︎ v2.1
+    🤖 Agent 301 ▫︎ Análise de Dados ▫︎ v2.0
 </div>
 """
 
