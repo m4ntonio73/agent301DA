@@ -280,8 +280,8 @@ Resposta Final: [resposta em português]
             with col2:
                 submitted = st.form_submit_button("🔍 Analisar Dados", use_container_width=True)
             if query:
-            # Função para detectar se a pergunta é sobre os dados ou conversa casual
-            def is_data_related_query(query_text):
+              # Função para detectar se a pergunta é sobre os dados ou conversa casual
+              def is_data_related_query(query_text):
                 # Palavras-chave que indicam perguntas sobre dados
                 data_keywords = [
                     'dados', 'dataframe', 'df', 'csv', 'tabela', 'coluna', 'linha', 'registro',
