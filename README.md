@@ -1,6 +1,6 @@
 # 🤖 Agente Autônomo de Análise de Dados
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://agent301.streamlit.app)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://agent301da.streamlit.app)
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
@@ -16,11 +16,9 @@ Uma aplicação web inteligente para análise de dados CSV e Notas Fiscais usand
 - ✅ **Interface amigável** - Design responsivo e intuitivo
 - ✅ **Limpeza de arquivos** - Gerenciamento automático de arquivos temporários
 
-## 🚀 Demo
+## 🚀 Screenshot
 
-![Demo Screenshot](https://via.placeholder.com/800x400?text=Screenshot+da+Aplicação)
-
-*Adicione aqui uma captura de tela da sua aplicação*
+![Demo Screenshot](https://boredlabs.epizy.com/agent301.png)
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -42,8 +40,8 @@ Uma aplicação web inteligente para análise de dados CSV e Notas Fiscais usand
 
 1. **Clone o repositório:**
 ```bash
-git clone https://github.com/seu-usuario/agente-analise-dados.git
-cd agente-analise-dados
+git clone https://github.com/Projeto-12A2/agent301DA.git
+cd agent301DA
 ```
 
 2. **Instale as dependências:**
@@ -180,16 +178,16 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 ## 📞 Contato
 
-- **Autor:** Seu Nome
-- **Email:** seu.email@exemplo.com
-- **LinkedIn:** [seu-perfil](https://linkedin.com/in/seu-perfil)
-- **GitHub:** [@seu-usuario](https://github.com/seu-usuario)
+- **Autor:** m4ntonio
+- **Email:** m4ntonio@yahoo.com.br
+- **LinkedIn:** [m4ntonio](https://www.linkedin.com/in/m4ntonio/)
+- **GitHub:** [@m4ntonio73](https://github.com/m4ntonio73)
 
 ## 🙏 Agradecimentos
 
 - [Streamlit](https://streamlit.io) pela incrível framework
 - [LangChain](https://langchain.com) pela facilidade de integração com IA
-- [Google](https://google.com) pela API Gemini
+- [Google](https://aistudio.google.com) pela API Gemini
 - Comunidade open source pelos feedbacks e contribuições
 
 ---
