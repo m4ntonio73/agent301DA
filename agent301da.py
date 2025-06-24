@@ -1,4 +1,3 @@
-
 import streamlit as st
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_experimental.agents import create_csv_agent
@@ -19,7 +18,7 @@ st.set_page_config(
 # Carregar variáveis do arquivo .env
 load_dotenv()
 
-st.markdown('<h1 style="font-size: 2.3rem; text-align: left;">🤖 Agente Autônomo de Análise de Dados</h1>', unsafe_allow_html=True)
+st.markdown('<h1 style="font-size: 2.5rem; text-align: center;">Agente Autônomo de Análise de Dados</h1>', unsafe_allow_html=True)
 st.markdown("---")
 
 # Botão para limpar arquivos temporários
@@ -161,7 +160,7 @@ REGRAS OBRIGATÓRIAS:
 1. SEMPRE use df.shape[0] para confirmar o número total de registros
 2. NUNCA use apenas .head() para cálculos - use o dataset completo
 3. Para cálculos (soma, média, contagem), SEMPRE use todo o dataframe
-4. Sempre informe quantos registros foram analisados na resposta
+
 
 Pergunta original: {original_query}
 
@@ -184,8 +183,7 @@ REGRAS CRÍTICAS - SIGA RIGOROSAMENTE:
 1. SEMPRE execute df.shape[0] primeiro para saber o total de registros
 2. NUNCA use .head() para cálculos - apenas para visualização
 3. Para qualquer cálculo (soma, média, contagem), use o dataset COMPLETO
-4. SEMPRE informe na resposta quantos registros foram analisados
-5. Se a pergunta pede totais, some TODAS as linhas, não apenas uma amostra
+4. Se a pergunta pede totais, some TODAS as linhas, não apenas uma amostra
 
 Contexto dos dados:
 - Dados mesclados de notas fiscais (cabeçalho + itens)
@@ -211,7 +209,7 @@ Ação: python_repl_ast
 Entrada da Ação: [código para análise completa]
 Observação: [resultado]
 Pensamento: Tenho o resultado baseado em TODO o dataset
-Resposta Final: [resposta em português informando quantos registros foram analisados]
+Resposta Final: [resposta em português]
 
 {agent_scratchpad}"""
     else:
@@ -222,8 +220,7 @@ REGRAS CRÍTICAS - SIGA RIGOROSAMENTE:
 1. SEMPRE execute df.shape[0] primeiro para saber o total de registros
 2. NUNCA use .head() para cálculos - apenas para visualização
 3. Para qualquer cálculo (soma, média, contagem), use o dataset COMPLETO
-4. SEMPRE informe na resposta quantos registros foram analisados
-5. Se a pergunta pede totais, some TODAS as linhas, não apenas uma amostra
+4. Se a pergunta pede totais, some TODAS as linhas, não apenas uma amostra
 
 FORMATO OBRIGATÓRIO para cálculos:
 1. Primeiro: df.shape para verificar tamanho
@@ -244,7 +241,7 @@ Ação: python_repl_ast
 Entrada da Ação: [código para análise completa]
 Observação: [resultado]
 Pensamento: Tenho o resultado baseado em TODO o dataset
-Resposta Final: [resposta em português informando quantos registros foram analisados]
+Resposta Final: [resposta em português]
 
 {agent_scratchpad}"""
 
@@ -273,9 +270,22 @@ Resposta Final: [resposta em português informando quantos registros foram anali
             prompt=prompt
         )
 
-        query = st.text_input("👉 Pergunte alguma coisa sobre os dados:")
+        # Form para controlar quando executar a análise
+        with st.form("analysis_form", clear_on_submit=False):
+            
+            query = st.text_input("👉 Pergunte alguma coisa sobre os dados:")
+            
+            # Botão centralizado e estilizado
+            col1, col2, col3 = st.columns([3, 2, 3])
+            with col2:
+                submitted = st.form_submit_button("🔍 Analisar Dados", use_container_width=True)
 
-        if query:
+        # Só executa quando o botão for clicado E houver uma query
+        if submitted:
+          if not query or not query.strip():  # Verifica se está vazio ou só tem espaços
+                st.error("⚠️ Por favor, pergunte alguma coisa antes!")
+        else:
+          if submitted and query:
             # Função para detectar se a pergunta é sobre os dados ou conversa casual
             def is_data_related_query(query_text):
                 # Palavras-chave que indicam perguntas sobre dados
@@ -322,14 +332,12 @@ Resposta Final: [resposta em português informando quantos registros foram anali
                 # Enhancear a query com validações automáticas
                 enhanced_query = enhance_query_for_full_dataset(query, df_info)
                 
-                with st.spinner(" Analisando os dados..."):
+                with st.spinner("🔍 Analisando os dados..."):
                     response = agent.run(enhanced_query)
 
                 st.write("💡 Resposta:")
                 st.write(response)
                 
-                # Adicionar verificação pós-análise
-                #st.info(f"ℹ️ Dataset analisado: {df_info['total_rows']} registros, {df_info['total_cols']} colunas")
             else:
                 # Resposta para conversas casuais
                 casual_responses = {
@@ -394,7 +402,7 @@ footer = """
 }
 </style>
 <div class="custom-footer">
-    🤖 Agent 301 ▫︎ Análise de Dados ▫︎ v2.0.0
+    🤖 Agent 301 ▫︎ Análise de Dados ▫︎ v2.1.0
 </div>
 """
 
