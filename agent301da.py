@@ -281,10 +281,10 @@ Resposta Final: [resposta em português]
                 submitted = st.form_submit_button("🔍 Analisar Dados", use_container_width=True)
 
         # Só executa quando o botão for clicado E houver uma query
-        if submitted:
-          if not query or not query.strip():  # Verifica se está vazio ou só tem espaços
-                st.error("⚠️ Pergunte alguma coisa antes!")
-        else:
+        #if submitted:
+          #if not query or not query.strip():  # Verifica se está vazio ou só tem espaços
+                #st.error("⚠️ Pergunte alguma coisa antes!")
+        #else:
           if query:
             # Função para detectar se a pergunta é sobre os dados ou conversa casual
             def is_data_related_query(query_text):
