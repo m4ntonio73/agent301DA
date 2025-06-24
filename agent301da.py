@@ -285,7 +285,7 @@ Resposta Final: [resposta em português]
           if not query or not query.strip():  # Verifica se está vazio ou só tem espaços
                 st.error("⚠️ Por favor, pergunte alguma coisa antes!")
         else:
-          if submitted and query:
+          if submitted:
             # Função para detectar se a pergunta é sobre os dados ou conversa casual
             def is_data_related_query(query_text):
                 # Palavras-chave que indicam perguntas sobre dados
