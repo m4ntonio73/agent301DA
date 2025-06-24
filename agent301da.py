@@ -279,13 +279,7 @@ Resposta Final: [resposta em português]
             col1, col2, col3 = st.columns([3, 2, 3])
             with col2:
                 submitted = st.form_submit_button("🔍 Analisar Dados", use_container_width=True)
-
-        # Só executa quando o botão for clicado E houver uma query
-        #if submitted:
-          #if not query or not query.strip():  # Verifica se está vazio ou só tem espaços
-                #st.error("⚠️ Pergunte alguma coisa antes!")
-        #else:
-          if query:
+            if query:
             # Função para detectar se a pergunta é sobre os dados ou conversa casual
             def is_data_related_query(query_text):
                 # Palavras-chave que indicam perguntas sobre dados
